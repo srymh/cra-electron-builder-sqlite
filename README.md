@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+**This project needs Yarn to run scripts.**
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -36,6 +38,28 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `yarn electron:dev`
+
+debug
+
+#### Prevents `electron:dev` script from opening browser
+
+For Windows users  
+Adds an `.env.development.local` file that has content:
+```
+BROWSER=none
+```
+
+For others  
+Modifies `electron:dev` script:
+```
+"electron:dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
+```
+
+### `yarn electron:build`
+
+build for release
 
 ## Learn More
 
