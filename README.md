@@ -2,6 +2,34 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 **This project needs Yarn to run scripts.**
 
+## Installing sqlite3
+
+**Check here for details. [sqlite3 \- npm](https://www.npmjs.com/package/sqlite3#custom-builds-and-electron)**
+
+For Windows:
+
+1. You need "Visual Studio C++ Build Tools" and "Python 2".
+   - or use [felixrieseberg/windows\-build\-tools: Install C\+\+ Build Tools for Windows using npm](https://github.com/felixrieseberg/windows-build-tools)
+2. Install node-gyp
+   - `npm install -g node-gyp` or `yarn global add node-gyp`
+3. To install sqlite3, run a batch file:
+    ``` bat
+    @echo off
+    setlocal
+    set npm_config_build-from-source=true
+    set npm_config_save=true
+    set npm_config_runtime=electron
+    REM specify Electron version
+    set npm_config_target=8.2.0
+    set npm_config_dist-url=https://atom.io/download/electron
+    yarn add sqlite3
+    endlocal
+
+    REM This script is the same as:
+    REM npm install sqlite3 --build-from-source --runtime=electron --target=8.2.0 --dist-url=https://atom.io/download/electron
+    ```
+    reference: [node\.js \- Does yarn add package \-\-build\-from\-source behave like npm install package \-\-build\-from\-source when passing node\-gyp flags to packages? \- Stack Overflow](https://stackoverflow.com/questions/45758461/does-yarn-add-package-build-from-source-behave-like-npm-install-package-buil)
+
 ## Available Scripts
 
 In the project directory, you can run:
